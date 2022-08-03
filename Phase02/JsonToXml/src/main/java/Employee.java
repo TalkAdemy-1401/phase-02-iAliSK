@@ -242,37 +242,4 @@ public class Employee {
     public void setMyCash(int myCash) {
         this.myCash = myCash;
     }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", about='" + about + '\'' +
-                ", token='" + token + '\'' +
-                ", country='" + country + '\'' +
-                ", location='" + location + '\'' +
-                ", lng=" + lng +
-                ", lat=" + lat +
-                ", dob='" + dob + '\'' +
-                ", gender=" + gender +
-                ", userType=" + userType +
-                ", userStatus=" + userStatus +
-                ", profilePicture='" + profilePicture + '\'' +
-                ", coverPicture='" + coverPicture + '\'' +
-                ", enablefollowme=" + enablefollowme +
-                ", sendmenotifications=" + sendmenotifications +
-                ", sendTextmessages=" + sendTextmessages +
-                ", enabletagging=" + enabletagging +
-                ", createdAt='" + createdAt + '\'' +
-                ", updatedAt='" + updatedAt + '\'' +
-                ", livelng=" + livelng +
-                ", livelat=" + livelat +
-                ", liveLocation='" + liveLocation + '\'' +
-                ", creditBalance=" + creditBalance +
-                ", myCash=" + myCash +
-                '}';
-    }
 }
