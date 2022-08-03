@@ -1,5 +1,8 @@
+import data.JsonManager;
+import data.XmlManager;
+import users.Employee;
+
 import java.io.IOException;
-import java.util.List;
 
 public class Main {
 
@@ -8,11 +11,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         // read employee list from json file
-        JsonManager jsonManager = new JsonManager();
-        List<Employee> employeeList = jsonManager.readList(jsonPath);
+        JsonManager jsonManager = new JsonManager(jsonPath);
+        Employee[] employeeList = jsonManager.readEmployeeList();
 
         // write employee list to xml file
-        XmlManager xmlManager = new XmlManager();
-        xmlManager.writeList(employeeList, xmlPath);
+        XmlManager xmlManager = new XmlManager(xmlPath);
+        xmlManager.writeEmployeeList(employeeList);
     }
 }
