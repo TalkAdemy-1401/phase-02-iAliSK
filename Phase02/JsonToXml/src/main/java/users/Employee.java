@@ -1,5 +1,7 @@
 package users;
 
+import java.time.LocalDateTime;
+
 public class Employee extends Person {
     private String token;
     private String location;
@@ -8,8 +10,8 @@ public class Employee extends Person {
     private String dob;
     private int userType;
     private int userStatus;
-    private String createdAt;
-    private String updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private double livelng;
     private double livelat;
     private String liveLocation;
@@ -79,19 +81,19 @@ public class Employee extends Person {
     }
 
     public String getCreatedAt() {
-        return createdAt;
+        return createdAt.toString();
     }
 
     public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = LocalDateTime.parse(createdAt);
     }
 
     public String getUpdatedAt() {
-        return updatedAt;
+        return updatedAt.toString();
     }
 
     public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = LocalDateTime.parse(updatedAt);
     }
 
     public double getLivelng() {
