@@ -1,10 +1,10 @@
-package user;
+package model;
 
-import user.info.LocationInfo;
-import user.info.PaymentInfo;
-import user.info.PrivateInfo;
-import user.settings.AccountSettings;
-import user.settings.ProfileSettings;
+import model.userinfo.PaymentInfo;
+import model.userinfo.PrivateInfo;
+import model.usersettings.AccountSettings;
+import model.usersettings.ProfileSettings;
+import model.userinfo.LocationInfo;
 
 public class Employee {
     private String token;

@@ -1,8 +1,9 @@
-package user;
+package controller;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import model.Employee;
 
 import java.io.IOException;
 

@@ -1,14 +1,15 @@
-package user;
+package controller;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import user.info.LocationInfo;
-import user.info.PaymentInfo;
-import user.info.PrivateInfo;
-import user.settings.AccountSettings;
-import user.settings.ProfileSettings;
+import model.Employee;
+import model.userinfo.LocationInfo;
+import model.userinfo.PaymentInfo;
+import model.userinfo.PrivateInfo;
+import model.usersettings.AccountSettings;
+import model.usersettings.ProfileSettings;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package user.settings;
+package model.usersettings;
 
 public class AccountSettings {
     private boolean enablefollowme;

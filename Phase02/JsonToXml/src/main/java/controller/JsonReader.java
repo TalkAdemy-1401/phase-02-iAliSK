@@ -1,9 +1,8 @@
-package data;
+package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import user.Employee;
-import user.EmployeeDeserializer;
+import model.Employee;
 
 import java.io.File;
 import java.io.IOException;

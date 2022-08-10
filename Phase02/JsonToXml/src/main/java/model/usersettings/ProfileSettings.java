@@ -1,4 +1,4 @@
-package user.settings;
+package model.usersettings;
 
 public class ProfileSettings {
     private int userStatus;

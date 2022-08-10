@@ -1,10 +1,9 @@
-package data;
+package controller;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import user.Employee;
-import user.EmployeeSerializer;
+import model.Employee;
 
 import java.io.File;
 import java.io.IOException;

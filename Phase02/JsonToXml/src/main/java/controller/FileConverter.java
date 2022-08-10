@@ -1,6 +1,6 @@
-package data;
+package controller;
 
-import user.Employee;
+import model.Employee;
 
 import java.io.IOException;
 

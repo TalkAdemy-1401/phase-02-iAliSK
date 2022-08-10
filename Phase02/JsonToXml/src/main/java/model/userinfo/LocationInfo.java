@@ -1,4 +1,4 @@
-package user.info;
+package model.userinfo;
 
 public class LocationInfo {
     private String country;
