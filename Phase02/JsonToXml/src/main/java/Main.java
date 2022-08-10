@@ -1,18 +1,12 @@
-import java.io.IOException;
-import java.util.List;
+import controller.FileConverter;
 
 public class Main {
 
-    private static final String jsonPath = "../../EmployeeData.json";
-    private static final String xmlPath = "../../EmployeeData.xml";
+    private static final String jsonPath = "src/main/resources/EmployeeData.json";
+    private static final String xmlPath = "src/main/resources/EmployeeData.xml";
 
-    public static void main(String[] args) throws IOException {
-        // read employee list from json file
-        JsonManager jsonManager = new JsonManager();
-        List<Employee> employeeList = jsonManager.readList(jsonPath);
+    public static void main(String[] args) {
 
-        // write employee list to xml file
-        XmlManager xmlManager = new XmlManager();
-        xmlManager.writeList(employeeList, xmlPath);
+        FileConverter.Json2Xml(jsonPath, xmlPath);
     }
 }
