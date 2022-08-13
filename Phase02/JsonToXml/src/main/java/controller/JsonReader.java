@@ -7,13 +7,20 @@ import model.Employee;
 import java.io.File;
 import java.io.IOException;
 
-public class JsonReader extends File {
+public class JsonReader {
 
-    public JsonReader(String filename) {
-        super(filename);
+    private static JsonReader instance;
+
+    private JsonReader() {
     }
 
-    public Employee[] readEmployeeList() throws IOException {
+    public static JsonReader getInstance() {
+        if (instance == null)
+            instance = new JsonReader();
+        return instance;
+    }
+
+    public Employee[] readEmployeeList(String jsonPath) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
 
@@ -21,7 +28,7 @@ public class JsonReader extends File {
         mapper.registerModule(module);
 
         return mapper.readValue(
-                getAbsoluteFile(),
+                new File(jsonPath),
                 Employee[].class
         );
     }

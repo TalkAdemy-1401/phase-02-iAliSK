@@ -8,13 +8,20 @@ import model.Employee;
 import java.io.File;
 import java.io.IOException;
 
-public class XmlWriter extends File {
+public class XmlWriter {
 
-    public XmlWriter(String filename) {
-        super(filename);
+    private static XmlWriter instance;
+
+    private XmlWriter() {
     }
 
-    public void writeEmployeeList(Employee[] employeeList) throws IOException {
+    public static XmlWriter getInstance() {
+        if (instance == null)
+            instance = new XmlWriter();
+        return instance;
+    }
+
+    public void writeEmployeeList(Employee[] employeeList, String xmlPath) throws IOException {
         XmlMapper mapper = new XmlMapper();
         SimpleModule module = new SimpleModule();
 
@@ -23,7 +30,7 @@ public class XmlWriter extends File {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         mapper.writeValue(
-                getAbsoluteFile(),
+                new File(xmlPath),
                 employeeList
         );
     }
