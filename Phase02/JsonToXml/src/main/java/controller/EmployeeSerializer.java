@@ -40,8 +40,8 @@ public class EmployeeSerializer extends StdSerializer<Employee> {
         jgen.writeBooleanField("sendmenotifications", employee.getAccountSettings().isSendmenotifications());
         jgen.writeBooleanField("sendTextmessages", employee.getAccountSettings().isSendTextmessages());
         jgen.writeBooleanField("enabletagging", employee.getAccountSettings().isEnabletagging());
-        jgen.writeStringField("createdAt", employee.getProfileSettings().getCreatedAt());
-        jgen.writeStringField("updatedAt", employee.getProfileSettings().getUpdatedAt());
+        jgen.writeStringField("createdAt", employee.getProfileSettings().getCreatedAt().toString());
+        jgen.writeStringField("updatedAt", employee.getProfileSettings().getUpdatedAt().toString());
         jgen.writeStringField("liveLocation", employee.getLocationInfo().getLiveLocation());
         jgen.writeNumberField("livelng", employee.getLocationInfo().getLivelng());
         jgen.writeNumberField("livelat", employee.getLocationInfo().getLivelat());

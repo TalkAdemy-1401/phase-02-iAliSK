@@ -12,6 +12,7 @@ import model.usersettings.AccountSettings;
 import model.usersettings.ProfileSettings;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class EmployeeDeserializer extends StdDeserializer<Employee> {
 
@@ -65,8 +66,8 @@ public class EmployeeDeserializer extends StdDeserializer<Employee> {
                 .userStatus(node.get("userStatus").asInt())
                 .profilePicture(node.get("profilePicture").asText())
                 .coverPicture(node.get("coverPicture").asText())
-                .createdAt(node.get("createdAt").asText())
-                .updatedAt(node.get("updatedAt").asText())
+                .createdAt(LocalDateTime.parse(node.get("createdAt").asText()))
+                .updatedAt(LocalDateTime.parse(node.get("updatedAt").asText()))
                 .build();
 
 
