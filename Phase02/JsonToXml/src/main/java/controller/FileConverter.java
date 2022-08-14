@@ -17,7 +17,7 @@ public class FileConverter {
         return instance;
     }
 
-    public static void Json2Xml(String jsonPath, String xmlPath) throws IOException {
+    public void Json2Xml(String jsonPath, String xmlPath) throws IOException {
         JsonReader jsonReader = JsonReader.getInstance();
         XmlWriter xmlManager = XmlWriter.getInstance();
         Employee[] employeeList;

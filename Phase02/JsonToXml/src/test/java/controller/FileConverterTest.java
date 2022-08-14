@@ -21,7 +21,7 @@ class FileConverterTest {
         dstPath = "src/test/resources/EmployeeDataTest.xml";
 
         Exception exception = assertThrows(FileNotFoundException.class,
-                () -> FileConverter.Json2Xml(srcPath, dstPath));
+                () -> FileConverter.getInstance().Json2Xml(srcPath, dstPath));
 
         String expectedMessage = "No such file";
         String actualMessage = exception.getMessage();
@@ -34,7 +34,7 @@ class FileConverterTest {
         srcPath = "src/test/resources/EmployeeData.json";
         dstPath = "src/test/resources/EmployeeDataTest.xml";
 
-        FileConverter.Json2Xml(srcPath, dstPath);
+        FileConverter.getInstance().Json2Xml(srcPath, dstPath);
 
         File expectedFile = new File("src/test/resources/EmployeeData.xml");
         File actualFile = new File(dstPath);
