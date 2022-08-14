@@ -17,16 +17,12 @@ public class FileConverter {
         return instance;
     }
 
-    public void Json2Xml(String jsonPath, String xmlPath) {
+    public static void Json2Xml(String jsonPath, String xmlPath) throws IOException {
         JsonReader jsonReader = JsonReader.getInstance();
         XmlWriter xmlManager = XmlWriter.getInstance();
         Employee[] employeeList;
 
-        try {
-            employeeList = jsonReader.readEmployeeList(jsonPath);
-            xmlManager.writeEmployeeList(employeeList, xmlPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        employeeList = jsonReader.readEmployeeList(jsonPath);
+        xmlManager.writeEmployeeList(employeeList, xmlPath);  
     }
 }
