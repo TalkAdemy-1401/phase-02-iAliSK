@@ -1,7 +1,7 @@
 package controller;
 
+import model.Employee;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -11,24 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class XmlWriterTest {
 
-    private JsonReader jsonReader;
-    private XmlWriter xmlWriter;
-
-    @BeforeEach
-    void setUp() {
-        jsonReader = new JsonReader("src/test/resources/EmployeeData.json");
-        xmlWriter = new XmlWriter("src/test/resources/EmployeeDataTest.xml");
-    }
-
     @Test
     void testWriteEmployeeList() throws IOException {
+        String jsonPath = "src/test/resources/EmployeeData.json";
+        String xmlPath = "src/test/resources/EmployeeDataTest.xml";
 
-        xmlWriter.writeEmployeeList(
-                jsonReader.readEmployeeList()
-        );
+        Employee[] employeeList = JsonReader.getInstance().readEmployeeList(jsonPath);
+        XmlWriter.getInstance().writeEmployeeList(employeeList, xmlPath);
 
         File expectedFile = new File("src/test/resources/EmployeeData.xml");
-        File actualFile = xmlWriter.getAbsoluteFile();
+        File actualFile = new File(xmlPath);
 
         assertTrue(FileUtils.contentEquals(expectedFile, actualFile));
     }

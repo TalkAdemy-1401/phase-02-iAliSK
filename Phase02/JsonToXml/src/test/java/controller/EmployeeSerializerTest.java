@@ -7,7 +7,6 @@ import model.userinfo.PaymentInfo;
 import model.userinfo.PrivateInfo;
 import model.usersettings.AccountSettings;
 import model.usersettings.ProfileSettings;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,10 +29,6 @@ class EmployeeSerializerTest {
         jsonGenerator = mock(JsonGenerator.class);
     }
 
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void testSerialize() throws IOException {
         Employee employee = buildEmployee();
@@ -44,11 +39,18 @@ class EmployeeSerializerTest {
     }
 
     private Employee buildEmployee() {
-        PaymentInfo paymentInfo = new PaymentInfo(0, 0);
-        PrivateInfo privateInfo = new PrivateInfo(1000, "", 0, "", "", "", "");
-        LocationInfo locationInfo = new LocationInfo("", "", 0, 0, 0, 0, "");
-        ProfileSettings profileSettings = new ProfileSettings(0, "", "", "", "");
-        AccountSettings accountSettings = new AccountSettings(true, false, false, false);
-        return new Employee("test-token", 0, privateInfo, locationInfo, paymentInfo, profileSettings, accountSettings);
+        PaymentInfo paymentInfo = PaymentInfo.builder().build();
+        PrivateInfo privateInfo = PrivateInfo.builder().id(1000).token("test-token").build();
+        LocationInfo locationInfo = LocationInfo.builder().build();
+        ProfileSettings profileSettings = ProfileSettings.builder().build();
+        AccountSettings accountSettings = AccountSettings.builder().enablefollowme(true).build();
+
+        return Employee.builder()
+                .paymentInfo(paymentInfo)
+                .privateInfo(privateInfo)
+                .locationInfo(locationInfo)
+                .profileSettings(profileSettings)
+                .accountSettings(accountSettings)
+                .build();
     }
 }

@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        FileConverter.Json2Xml(jsonPath, xmlPath);
+        FileConverter.getInstance()
+                .Json2Xml(jsonPath, xmlPath);
     }
 }

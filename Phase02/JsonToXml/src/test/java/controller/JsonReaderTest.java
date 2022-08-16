@@ -10,14 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JsonReaderTest {
 
-    private JsonReader jsonReader;
 
     @Test
     void testReadEmployeeListFileNotFound() {
-        jsonReader = new JsonReader("path/to/invalid/file.json");
-
-        Exception exception = assertThrows(FileNotFoundException.class,
-                () -> jsonReader.readEmployeeList());
+        Exception exception = assertThrows(FileNotFoundException.class, () ->
+                JsonReader.getInstance().readEmployeeList("path/to/invalid/file.json"));
 
         String expectedMessage = "No such file";
         String actualMessage = exception.getMessage();
@@ -27,9 +24,8 @@ class JsonReaderTest {
 
     @Test
     void testReadEmployeeList() throws IOException {
-        jsonReader = new JsonReader("src/test/resources/EmployeeData.json");
-
-        Employee[] employeeList = jsonReader.readEmployeeList();
+        Employee[] employeeList = JsonReader.getInstance()
+                .readEmployeeList("src/test/resources/EmployeeData.json");
 
         int exceptedValue = 4051;
         int actualValue = employeeList[0].getPrivateInfo().getId();

@@ -12,6 +12,7 @@ import model.usersettings.AccountSettings;
 import model.usersettings.ProfileSettings;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class EmployeeDeserializer extends StdDeserializer<Employee> {
 
@@ -27,44 +28,55 @@ public class EmployeeDeserializer extends StdDeserializer<Employee> {
     public Employee deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
         JsonNode node = jp.getCodec().readTree(jp);
 
-        int id = node.get("id").asInt();
-        String name = node.get("name").asText();
-        String email = node.get("email").asText();
-        String password = node.get("password").asText();
-        String about = node.get("about").asText();
-        String token = node.get("token").asText();
-        String country = node.get("country").asText();
-        String location = node.get("location").asText();
-        int lng = node.get("lng").asInt();
-        int lat = node.get("lat").asInt();
-        String dob = node.get("dob").asText();
-        int gender = node.get("gender").asInt();
-        int userType = node.get("userType").asInt();
-        int userStatus = node.get("userStatus").asInt();
-        String profilePicture = node.get("profilePicture").asText();
-        String coverPicture = node.get("coverPicture").asText();
-        boolean enablefollowme = node.get("enablefollowme").asBoolean();
-        boolean sendmenotifications = node.get("sendmenotifications").asBoolean();
-        boolean sendTextmessages = node.get("sendTextmessages").asBoolean();
-        boolean enabletagging = node.get("enabletagging").asBoolean();
-        String createdAt = node.get("createdAt").asText();
-        String updatedAt = node.get("updatedAt").asText();
-        double livelng = node.get("livelng").asDouble();
-        double livelat = node.get("livelat").asDouble();
-        String liveLocation = node.get("liveLocation").asText();
-        int creditBalance = node.get("creditBalance").asInt();
-        int myCash = node.get("myCash").asInt();
+        PrivateInfo privateInfo = PrivateInfo.builder()
+                .id(node.get("id").asInt())
+                .token(node.get("token").asText())
+                .name(node.get("name").asText())
+                .gender(node.get("gender").asInt())
+                .dob(node.get("dob").asText())
+                .about(node.get("about").asText())
+                .email(node.get("email").asText())
+                .password(node.get("password").asText())
+                .build();
 
-        PrivateInfo privateInfo = new PrivateInfo(id, name, gender, dob, about, email, password);
-        LocationInfo locationInfo = new LocationInfo(country, location, lng, lat, livelng, livelat, liveLocation);
-        PaymentInfo paymentInfo = new PaymentInfo(creditBalance, myCash);
+        LocationInfo locationInfo = LocationInfo.builder()
+                .country(node.get("country").asText())
+                .location(node.get("location").asText())
+                .lng(node.get("lng").asInt())
+                .lat(node.get("lat").asInt())
+                .livelng(node.get("livelng").asDouble())
+                .livelat(node.get("livelat").asDouble())
+                .liveLocation(node.get("liveLocation").asText())
+                .build();
 
-        AccountSettings accountSettings = new AccountSettings(enablefollowme,
-                sendmenotifications, sendTextmessages, enabletagging);
+        PaymentInfo paymentInfo = PaymentInfo.builder()
+                .creditBalance(node.get("creditBalance").asInt())
+                .myCash(node.get("myCash").asInt())
+                .build();
 
-        ProfileSettings profileSettings = new ProfileSettings(userStatus,
-                profilePicture, coverPicture, createdAt, updatedAt);
+        AccountSettings accountSettings = AccountSettings.builder()
+                .enablefollowme(node.get("enablefollowme").asBoolean())
+                .sendmenotifications(node.get("sendmenotifications").asBoolean())
+                .sendTextmessages(node.get("sendTextmessages").asBoolean())
+                .enabletagging(node.get("enabletagging").asBoolean())
+                .build();
 
-        return new Employee(token, userType, privateInfo, locationInfo, paymentInfo, profileSettings, accountSettings);
+        ProfileSettings profileSettings = ProfileSettings.builder()
+                .userType(node.get("userType").asInt())
+                .userStatus(node.get("userStatus").asInt())
+                .profilePicture(node.get("profilePicture").asText())
+                .coverPicture(node.get("coverPicture").asText())
+                .createdAt(LocalDateTime.parse(node.get("createdAt").asText()))
+                .updatedAt(LocalDateTime.parse(node.get("updatedAt").asText()))
+                .build();
+
+
+        return Employee.builder()
+                .privateInfo(privateInfo)
+                .locationInfo(locationInfo)
+                .paymentInfo(paymentInfo)
+                .profileSettings(profileSettings)
+                .accountSettings(accountSettings)
+                .build();
     }
 }
